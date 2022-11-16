@@ -1,0 +1,36 @@
+{
+  "name": "ad-kata-template-tcr",
+  "description": "",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=16.0.0",
+    "yarn": ">=1.22.0",
+    "pnpm": ">=7.14.0"
+  },
+  "engine-strict": true,
+  "scripts": {
+    "prepare": "husky install .config/husky",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "test": "npm run lint && jest",
+    "tcr-hook": "node ./bin/test-commit-revert-hook.js",
+    "tcr": "node ./bin/test-commit-revert.js",
+    "tcr-timeboxed": "node ./bin/test-commit-revert-timeboxed.js",
+    "tc": "node ./bin/test-commit.js"
+  },
+  "devDependencies": {
+    "@types/jest": "29.2.2",
+    "@types/node": "18.11.9",
+    "@typescript-eslint/eslint-plugin": "5.42.1",
+    "@typescript-eslint/parser": "5.42.1",
+    "dayjs": "1.11.6",
+    "eslint": "8.27.0",
+    "eslint-plugin-jest": "27.1.5",
+    "husky": "8.0.2",
+    "jest": "29.3.1",
+    "ts-jest": "29.0.3",
+    "typescript": "4.8.4"
+  }
+}
