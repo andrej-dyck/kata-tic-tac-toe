@@ -8,11 +8,14 @@ export const validTicTacToe = (grid: Grid): boolean => {
   const Xwon = isWinner(grid, 'X')
   const Owon = isWinner(grid, 'O')
 
-  return (Xs === Os || Xs - 1 === Os) && !(Xwon && Owon)
+  const oneXMoreThanOs = Xs - 1 === Os
+
+  return Xwon ? !Owon && oneXMoreThanOs
+    : Xs === Os || oneXMoreThanOs
 }
 
 const count = (grid: Grid, mark: Mark) =>
-  grid.flat().reduce((c, m) => m === mark ? c + 1 : c, 0)    
+  grid.flat().reduce((c, m) => m === mark ? c + 1 : c, 0)
 
 const isWinner = (grid: Grid, mark: Mark) =>
   fullRow(grid, mark) || fullColumn(grid, mark)

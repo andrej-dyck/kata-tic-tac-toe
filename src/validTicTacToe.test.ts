@@ -40,7 +40,7 @@ describe('tic-tac-toe grid state', () => {
       [' ', 'X', 'O'],
       ['O', 'X', 'O'],
     ]
-  }])('is valid when same count of Xs and Os', ({ grid }) => {
+  }])('is valid when same count of Xs and Os (and no winner)', ({ grid }) => {
     expect(validTicTacToe(grid)).toEqual(true)
   })
   it.each<{ grid: Grid }>([{
@@ -61,7 +61,7 @@ describe('tic-tac-toe grid state', () => {
       ['X', 'X', 'O'],
       ['O', 'X', 'O'],
     ]
-  }])('is valid when count of Xs is 1 more than Os', ({ grid }) => {
+  }])('is valid when count of Xs is 1 more than Os (and no winner)', ({ grid }) => {
     expect(validTicTacToe(grid)).toEqual(true)
   })
   it.each<{ grid: Grid }>([{
@@ -98,6 +98,24 @@ describe('tic-tac-toe grid state', () => {
       ['X', 'O', ' '],
     ]
   }])('is invalid when there are two winners', ({ grid }) => {
+    expect(validTicTacToe(grid)).toEqual(false)
+  })
+  it.each<{ grid: Grid }>([{
+    grid: [
+      ['X', 'X', 'X'],
+      ['O', ' ', 'O'],
+      [' ', ' ', ' '],
+    ]
+  }])('is valid when X won and count of Os is 1 less (O did not win)', ({ grid }) => {
+    expect(validTicTacToe(grid)).toEqual(true)
+  })
+  it.each<{ grid: Grid }>([{
+    grid: [
+      ['X', 'X', 'X'],
+      ['O', ' ', 'O'],
+      [' ', 'O', ' '],
+    ]
+  }])('is invalid when X won and count of Os equal (O did not win)', ({ grid }) => {
     expect(validTicTacToe(grid)).toEqual(false)
   })
 })
