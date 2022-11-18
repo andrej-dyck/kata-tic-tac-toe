@@ -12,7 +12,7 @@ export const validTicTacToe = (grid: Grid): boolean => {
   const oneXMoreThanOs = Xs - 1 === Os
 
   return Xwon ? !Owon && oneXMoreThanOs
-    : Owon ? equalXsAndOs
+    : Owon ? equalXsAndOs // && !Xwon
       : equalXsAndOs || oneXMoreThanOs
 }
 
