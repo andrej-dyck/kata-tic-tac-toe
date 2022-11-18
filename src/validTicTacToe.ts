@@ -11,9 +11,9 @@ export const validTicTacToe = (grid: Grid): boolean => {
   const equalXsAndOs = Xs === Os
   const oneXMoreThanOs = Xs - 1 === Os
 
-  return Xwon ? !Owon && oneXMoreThanOs
-    : Owon ? equalXsAndOs // && !Xwon
-      : equalXsAndOs || oneXMoreThanOs
+  if (Xwon) return !Owon && oneXMoreThanOs
+  if (Owon) return /* !Xwon && */ equalXsAndOs
+  return equalXsAndOs || oneXMoreThanOs
 }
 
 const count = (grid: Grid, mark: Mark) =>
@@ -30,4 +30,4 @@ const fullColumn = (grid: Grid, mark: Mark) =>
 
 const fullDiagonal = (grid: Grid, mark: Mark) =>
   [0, 1, 2].every(i => grid[i][i] === mark) ||
-  [0, 1, 2].every(i => grid[i][2-i] === mark)
+  [0, 1, 2].every(i => grid[i][2 - i] === mark)
