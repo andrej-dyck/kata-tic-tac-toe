@@ -91,6 +91,12 @@ describe('tic-tac-toe grid state', () => {
       ['O', 'O', 'O'],
       [' ', ' ', ' '],
     ]
+  }, {
+    grid: [
+      ['X', 'O', ' '],
+      ['X', 'O', ' '],
+      ['X', 'O', ' '],
+    ]
   }])('is invalid when there are two winners', ({ grid }) => {
     expect(validTicTacToe(grid)).toEqual(false)
   })
