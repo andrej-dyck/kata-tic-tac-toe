@@ -1,7 +1,7 @@
 import { validTicTacToe } from './validTicTacToe'
 
 describe('tic-tac-toe board', () => {
-  it('todo', () => {
-    expect(validTicTacToe).toThrow('not implemented')
+  it('empty grid is valid', () => {
+    expect(validTicTacToe([])).toEqual(true)
   })
 })
