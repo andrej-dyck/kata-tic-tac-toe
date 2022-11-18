@@ -8,10 +8,12 @@ export const validTicTacToe = (grid: Grid): boolean => {
   const Xwon = isWinner(grid, 'X')
   const Owon = isWinner(grid, 'O')
 
+  const equalXsAndOs = Xs === Os
   const oneXMoreThanOs = Xs - 1 === Os
 
   return Xwon ? !Owon && oneXMoreThanOs
-    : Xs === Os || oneXMoreThanOs
+    : Owon ? equalXsAndOs
+      : equalXsAndOs || oneXMoreThanOs
 }
 
 const count = (grid: Grid, mark: Mark) =>

@@ -118,4 +118,22 @@ describe('tic-tac-toe grid state', () => {
   }])('is invalid when X won and count of Os equal (O did not win)', ({ grid }) => {
     expect(validTicTacToe(grid)).toEqual(false)
   })
+  it.each<{ grid: Grid }>([{
+    grid: [
+      ['O', 'O', 'O'],
+      ['X', ' ', 'X'],
+      [' ', 'X', ' '],
+    ]
+  }])('is valid when O won and count of Xs is equal (X did not win)', ({ grid }) => {
+    expect(validTicTacToe(grid)).toEqual(true)
+  })
+  it.each<{ grid: Grid }>([{
+    grid: [
+      ['O', 'O', 'O'],
+      ['X', ' ', 'X'],
+      ['X', ' ', 'X'],
+    ]
+  }])('is invalid when O won and count of Xs is 1 more (X did not win)', ({ grid }) => {
+    expect(validTicTacToe(grid)).toEqual(false)
+  })
 })
