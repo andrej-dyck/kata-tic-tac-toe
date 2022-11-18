@@ -64,4 +64,25 @@ describe('tic-tac-toe grid state', () => {
   }])('is valid when count of Xs is 1 more than Os', ({ grid }) => {
     expect(validTicTacToe(grid)).toEqual(true)
   })
+  it.each<{ grid: Grid }>([{
+    grid: [
+      [' ', ' ', ' '],
+      [' ', 'X', 'O'],
+      [' ', ' ', 'O'],
+    ]
+  }, {
+    grid: [
+      [' ', 'O', ' '],
+      ['O', 'X', 'O'],
+      [' ', 'X', ' '],
+    ]
+  }, {
+    grid: [
+      ['X', 'O', 'X'],
+      ['O', 'X', 'O'],
+      ['O', 'X', 'O'],
+    ]
+  }])('is invalid when count of Os is more than Xs', ({ grid }) => {
+    expect(validTicTacToe(grid)).toEqual(false)
+  })
 })
