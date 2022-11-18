@@ -1,4 +1,4 @@
-import { validTicTacToe } from './validTicTacToe'
+import { Grid, validTicTacToe } from './validTicTacToe'
 
 describe('tic-tac-toe grid state', () => {
   it('empty grid is valid', () => {
@@ -22,18 +22,46 @@ describe('tic-tac-toe grid state', () => {
       [' ', ' ', ' '],
     ])).toEqual(false)
   })
-  it('is valid when same count of Xs and Os', () => {
-    expect(validTicTacToe([
+  it.each<{ grid: Grid }>([{
+    grid: [
       [' ', ' ', ' '],
       [' ', 'X', 'O'],
       [' ', ' ', ' '],
-    ])).toEqual(true)
+    ]
+  }, {
+    grid: [
+      [' ', 'O', ' '],
+      [' ', 'X', 'O'],
+      [' ', 'X', ' '],
+    ]
+  }, {
+    grid: [
+      ['X', 'O', 'X'],
+      [' ', 'X', 'O'],
+      ['O', 'X', 'O'],
+    ]
+  }])('is valid when same count of Xs and Os', ({ grid }) => {
+    expect(validTicTacToe(grid)).toEqual(true)
   })
-  it('is valid when count of Xs is 1 more than Os', () => {
-    expect(validTicTacToe([
+  it.each<{ grid: Grid }>([{
+    grid: [
       [' ', ' ', ' '],
       ['X', 'X', 'O'],
       [' ', ' ', ' '],
-    ])).toEqual(true)
+    ]
+  }, {
+    grid: [
+      ['X', 'O', ' '],
+      [' ', 'X', 'O'],
+      [' ', 'X', ' '],
+    ]
+  }, {
+    grid: [
+      ['X', 'O', 'X'],
+      ['X', 'X', 'O'],
+      ['O', 'X', 'O'],
+    ]
+  }])('is valid when count of Xs is 1 more than Os', ({ grid }) => {
+    expect(validTicTacToe(grid)).toEqual(true)
   })
 })

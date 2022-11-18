@@ -1,5 +1,5 @@
 type Mark = 'X' | 'O' | ' '
-type Grid = [[Mark, Mark, Mark], [Mark, Mark, Mark], [Mark, Mark, Mark]]
+export type Grid = [[Mark, Mark, Mark], [Mark, Mark, Mark], [Mark, Mark, Mark]]
 
 export const validTicTacToe = (grid: Grid): boolean => {
   const Xs = count(grid, 'X')
