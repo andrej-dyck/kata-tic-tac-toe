@@ -1,6 +1,6 @@
 import { validTicTacToe } from './validTicTacToe'
 
-describe('tic-tac-toe board', () => {
+describe('tic-tac-toe grid state', () => {
   it('empty grid is valid', () => {
     expect(validTicTacToe([
       [' ', ' ', ' '],
@@ -14,5 +14,12 @@ describe('tic-tac-toe board', () => {
       [' ', 'X', ' '],
       [' ', ' ', ' '],
     ])).toEqual(true)
+  })
+  it('O must not start', () => {
+    expect(validTicTacToe([
+      [' ', ' ', ' '],
+      [' ', 'O', ' '],
+      [' ', ' ', ' '],
+    ])).toEqual(false)
   })
 })
