@@ -22,10 +22,17 @@ describe('tic-tac-toe grid state', () => {
       [' ', ' ', ' '],
     ])).toEqual(false)
   })
-  it('is valid when same amount of Xs and Os', () => {
+  it('is valid when same count of Xs and Os', () => {
     expect(validTicTacToe([
       [' ', ' ', ' '],
       [' ', 'X', 'O'],
+      [' ', ' ', ' '],
+    ])).toEqual(true)
+  })
+  it('is valid when count of Xs is 1 more than Os', () => {
+    expect(validTicTacToe([
+      [' ', ' ', ' '],
+      ['X', 'X', 'O'],
       [' ', ' ', ' '],
     ])).toEqual(true)
   })
